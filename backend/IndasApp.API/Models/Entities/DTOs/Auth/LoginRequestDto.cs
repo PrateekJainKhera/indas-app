@@ -7,9 +7,16 @@ namespace IndasApp.API.Models.DTOs.Auth
         // [EmailAddress] check karega ki format email jaisa hai ya nahi.
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
-        public string Password { get; set; }
+        public required string Password { get; set; }
+               [System.ComponentModel.DataAnnotations.Required]
+
+        public double Latitude { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+
+      
+        public double Longitude { get; set; }
     }
 }

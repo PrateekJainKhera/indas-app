@@ -22,7 +22,19 @@ namespace IndasApp.API.Controllers
         // Endpoint: POST /api/auth/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequest)
+        
         {
+             // --- BACKEND DEBUGGING LINE ---
+    // Let's see what data the controller is actually receiving from the frontend.
+    Console.WriteLine($"--- Received Login Request ---");
+    Console.WriteLine($"Email: {loginRequest.Email}");
+    Console.WriteLine($"Password: {loginRequest.Password}"); // Don't do this in production!
+    Console.WriteLine($"Latitude: {loginRequest.Latitude}");
+    Console.WriteLine($"Longitude: {loginRequest.Longitude}");
+    Console.WriteLine($"-----------------------------");
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    
             try
             {
                 // Hum login logic ko AuthService me delegate kar rahe hain.
@@ -36,15 +48,15 @@ namespace IndasApp.API.Controllers
             {
                 // Agar AuthService ne "UnauthorizedAccessException" throw kiya (galat password/email),
                 // to 401 Unauthorized response bhejo.
-                Console.WriteLine("error : ",ex);
+                Console.WriteLine("error : ", ex.Message);
                 return Unauthorized(new { message = ex.Message });
-                
+
             }
             catch (Exception ex)
             {
                 // Kisi aur unexpected error ke liye, 500 Internal Server Error bhejo.
                 // Production me, is error ko log karna zaroori hai.
-                Console.WriteLine("error : ",ex);
+                Console.WriteLine("error : ", ex);
                 return StatusCode(500, new { message = "unauthorized" });
             }
         }
@@ -69,7 +81,6 @@ namespace IndasApp.API.Controllers
             // Jab user logged in hota hai, to uski saari details (Claims) HttpContext.User me available hoti hain.
             // Hum in claims se user ki details nikal kar DTO banakar bhej sakte hain.
             var userClaims = HttpContext.User.Claims;
-
             var currentUser = new
             {
                 Id = userClaims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,

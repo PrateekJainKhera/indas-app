@@ -6,7 +6,7 @@
 using IndasApp.API.Services;
 using IndasApp.API.Services.Helpers;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 // =================================================================
 // 2. APPLICATION BUILDER SETUP
 // =================================================================
@@ -21,7 +21,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 3.1. Add Controllers Service
 // Yeh ASP.NET Core ko batata hai ki hum API Controllers ka istemaal karenge.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(); // This tells ASP.NET Core to use the more flexible 
 
 // 3.2. Add Cookie Authentication Service (Yeh sabse important part hai)
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -80,6 +81,11 @@ builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 
+builder.Services.AddScoped<IAttendanceService, AttendanceService>();
+
+builder.Services.AddScoped<IGeofenceService, GeofenceService>();
+
+builder.Services.AddScoped<ITrackingService, TrackingService>();
 
 // =================================================================
 // 4. BUILD THE APPLICATION
