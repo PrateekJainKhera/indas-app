@@ -39,5 +39,25 @@ namespace IndasApp.API.Services
                 }
             }
         }
+          public async Task EndDutyAsync(int userId, DateTime date)
+        {
+            var connectionString = _configuration.GetConnectionString("MyConn");
+            await using var connection = new SqlConnection(connectionString);
+
+            // This query finds the user's attendance record for today and updates the CheckOutTime.
+            var query = @"
+                UPDATE Attendance 
+                SET CheckOutTime = @CheckOutTime 
+                WHERE UserId = @UserId AND AttendanceDate = @AttendanceDate AND CheckOutTime IS NULL;
+            ";
+
+            await using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@CheckOutTime", DateTime.UtcNow);
+            command.Parameters.AddWithValue("@UserId", userId);
+            command.Parameters.AddWithValue("@AttendanceDate", date.Date);
+
+            await connection.OpenAsync();
+            await command.ExecuteNonQueryAsync();
+        }
     }
 }

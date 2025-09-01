@@ -80,3 +80,6 @@ C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\
 C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
+C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\prate\OneDrive\Desktop\indas-app\backend\IndasApp.Api\bin\Debug\net9.0\Microsoft.Extensions.Features.dll

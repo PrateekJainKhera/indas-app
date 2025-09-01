@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IndasApp.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87d2e8620f9fd465c3876d8fe94241df552b41ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2954734069c1594a563be92ab75589b0471a5f5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("IndasApp.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IndasApp.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,10 +3,13 @@
 // =================================================================
 // Hum yahan un sabhi tools ko import kar rahe hain jinki humein zaroorat padegi.
 
+using IndasApp.API.BackgroundServices;
+using IndasApp.API.Hubs;
 using IndasApp.API.Services;
 using IndasApp.API.Services.Helpers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+
 // =================================================================
 // 2. APPLICATION BUILDER SETUP
 // =================================================================
@@ -24,6 +27,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
     .AddNewtonsoftJson(); // This tells ASP.NET Core to use the more flexible 
 
+// 3.x. Add SignalR Service
+builder.Services.AddSignalR();
 // 3.2. Add Cookie Authentication Service (Yeh sabse important part hai)
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -36,6 +41,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         
         // Cookie ko JavaScript se access nahi kiya ja sakta. Yeh XSS attacks se bachata hai.
         options.Cookie.HttpOnly = true;
+
+                options.Cookie.SameSite = SameSiteMode.None;
+
         
         // Cookie kitne der tak valid rahegi.
         options.ExpireTimeSpan = TimeSpan.FromHours(8);
@@ -64,10 +72,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowNextJsApp", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Yahan apne Next.js app ka URL daalein
+        policy.WithOrigins("http://localhost:3000") // Still specify the frontend URL
               .AllowAnyHeader()
               .AllowAnyMethod()
-              .AllowCredentials(); // Cookies bhejne ke liye yeh zaroori hai
+              .AllowCredentials();
     });
 });
 
@@ -86,7 +94,12 @@ builder.Services.AddScoped<IAttendanceService, AttendanceService>();
 builder.Services.AddScoped<IGeofenceService, GeofenceService>();
 
 builder.Services.AddScoped<ITrackingService, TrackingService>();
+builder.Services.AddScoped<ISummaryService, SummaryService>();
+builder.Services.AddScoped<ISecurityService, SecurityService>();
 
+builder.Services.AddHostedService<DailySummaryJob>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAnomalyDetectionService, AnomalyDetectionService>();
 // =================================================================
 // 4. BUILD THE APPLICATION
 // =================================================================
@@ -120,6 +133,10 @@ app.UseAuthorization();
 // 5.5. Map Controllers
 // Request ko sahi Controller action method tak route karega.
 app.MapControllers();
+
+// 5.6. Map the SignalR Hub
+// This tells the application that any requests to "/locationHub" should be handled by our LocationHub.
+app.MapHub<LocationHub>("/locationHub");
 
 // =================================================================
 // 6. RUN THE APPLICATION

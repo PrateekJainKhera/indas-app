@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.Api\\IndasApp.API.csproj": {}
+    "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.API\\IndasApp.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.Api\\IndasApp.API.csproj": {
+    "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.API\\IndasApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.Api\\IndasApp.API.csproj",
+        "projectUniqueName": "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.API\\IndasApp.API.csproj",
         "projectName": "IndasApp.API",
-        "projectPath": "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.Api\\IndasApp.API.csproj",
+        "projectPath": "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.API\\IndasApp.API.csproj",
         "packagesPath": "C:\\Users\\prate\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.Api\\obj\\",
+        "outputPath": "C:\\Users\\prate\\OneDrive\\Desktop\\indas-app\\backend\\IndasApp.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
@@ -60,6 +60,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.5, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Common": {
+              "target": "Package",
+              "version": "[9.0.8, )"
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",

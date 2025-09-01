@@ -1,0 +1,89 @@
+# -----------------------------
+# OS-specific
+# -----------------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# -----------------------------
+# Visual Studio / Rider / VSCode
+# -----------------------------
+.vs/
+.idea/
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# -----------------------------
+# Build results
+# -----------------------------
+bin/
+obj/
+out/
+[Bb]uild/
+[Ll]ogs/
+[Ll]og/
+*.log
+
+# -----------------------------
+# NuGet
+# -----------------------------
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# -----------------------------
+# Publish
+# -----------------------------
+/publish/
+/artifacts/
+/release/
+/debug/
+/x64/
+/x86/
+/[Ww][Ii][Nn]32/
+
+# -----------------------------
+# DotNet Tools
+# -----------------------------
+*.global.json
+*.dotCover
+*.coverage
+*.coveragexml
+
+# -----------------------------
+# Configuration / Secrets
+# -----------------------------
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+*.secret.json
+*.env
+
+# -----------------------------
+# Others
+# -----------------------------
+*.db
+*.bak
+*.swp
+*.tmp
+*.sqlite
+
+# -----------------------------
+# Resharper / Rider
+# -----------------------------
+_ReSharper*/
+*.DotSettings.user

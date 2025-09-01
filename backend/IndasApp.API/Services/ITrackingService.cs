@@ -6,5 +6,7 @@ namespace IndasApp.API.Services
     {
         Task LogLocationPingAsync(int userId, LocationPingDto pingDto);
         Task LogGeofenceEventAsync(int userId, GeofenceEventDto eventDto);
+                Task<IEnumerable<LocationPointDto>> GetPathHistoryAsync(int userId, DateTime date);
+
     }
 }
